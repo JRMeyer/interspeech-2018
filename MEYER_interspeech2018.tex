@@ -138,6 +138,16 @@ As we can see, the baseline model overfits to the training data after about 250 
 \end{figure}
 
 
+\begin{figure}[!htb]
+  \centering
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{figs/atai-libritriphones-10-to-1.png}
+  \caption{Aux Task == LibriSpeech + Triphones // 10-to-1}
+\endminipage\hfill
+\end{figure}
+
+
+
 Above, we see the addition of triphones as an auxiliary task from the LibriSpeech corpus. Overfit to Atai after 500 iterations. The performance for the final model (clearly would be beat out if we used early stopping) is 49.85\% WER on decoding the held-out test data.
 
 \begin{figure}[!htb]
@@ -166,6 +176,9 @@ Here we are with the last model:
 
 
 
+
+
+
 \begin{table}[!htbp]
   \centering
   \begin{adjustbox}{width=.45\textwidth}
@@ -175,6 +188,7 @@ Here we are with the last model:
       \midrule
       Atai (STL Baseline) &  53.66\% \\
       Atai + Libri-Triphones & 49.85\%  \\
+      Atai + Libri-Triphones 10-to-1 & 50.54\%  \\
       Atai + Libri-Monophones &  51.32\% \\
       Atai + Libri-Monophones + Libri-Triphones & 51.32\%  \\
       \bottomrule
