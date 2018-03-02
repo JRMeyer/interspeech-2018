@@ -213,6 +213,7 @@ Takeaways from 500-dim // 5-epoch // 2-to-1 weighting:
 \item atai overfits with monophones earlier, I think because it's an easier task
 \item 10-to-1 weighting on 5 epochs seems like we've overfit the data, but validation is STILL increaing... try to run on 10 epochs and see what happens. 500 dim, 5 layer, aux task == triphones.
 \item try 5-to-1, because 2-to-1 seems too weak, and 10-to-1 seems too strong
+  \item only train on 30 minutes of Krygyz... more likely to find an effect
 \end{enumerate}
 
 
