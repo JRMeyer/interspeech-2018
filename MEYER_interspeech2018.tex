@@ -181,23 +181,40 @@ Here we are with the last model:
 
 \begin{table}[!htbp]
   \centering
+    \caption{5-to-1 Weighting // 5-layer // 10 epoch // 500-dim}
   \begin{adjustbox}{width=.45\textwidth}
     \begin{tabular}{lc}
       \toprule
       \textbf{Tasks} & \textbf{WER\%}\\
       \midrule
-      Atai (STL Baseline) &  53.66\% \\
-      Atai + Libri-Triphones & 49.85\%  \\
-      Atai + Libri-Triphones 10-to-1 & 50.54\%  \\
-      Atai + Libri-Monophones &  51.32\% \\
-      Atai + Libri-Monophones + Libri-Triphones & 51.32\%  \\
+      Atai + Atai (STL Baseline) &  51.54\% \\
+      Atai + Libri-Triphones & 52.29 \%  \\
+      Atai + Libri-Monophones & 50.93 \% \\
+      Atai + Libri-Monophones + Libri-Triphones & 50.44 \%  \\
       \bottomrule
     \end{tabular}
     \label{table:data}
   \end{adjustbox}
-  
-  \caption{Experimental Setup}
-  
+\end{table}
+
+
+
+\begin{table}[!htbp]
+  \centering
+    \caption{10-to-1 Weighting // 5-layer // 10 epoch // 500-dim}
+  \begin{adjustbox}{width=.45\textwidth}
+    \begin{tabular}{lc}
+      \toprule
+      \textbf{Tasks} & \textbf{WER\%}\\
+      \midrule
+      Atai + Atai (STL Baseline) &  51.54\% \\
+      Atai + Libri-Triphones & 51.51 \%  \\
+      Atai + Libri-Monophones & 53.66 \% \\
+      Atai + Libri-Monophones + Libri-Triphones & 53.46 \%  \\
+      \bottomrule
+    \end{tabular}
+    \label{table:data}
+  \end{adjustbox}
 \end{table}
 
 
