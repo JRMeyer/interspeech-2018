@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  5 MAR 2018 08:20
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  5 MAR 2018 11:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -318,6 +318,9 @@ LaTeX Warning: Label `table:data' multiply defined.
 
 LaTeX Warning: Label `table:data' multiply defined.
 
+
+LaTeX Warning: Label `table:data' multiply defined.
+
 )
 \openout1 = `MEYER_interspeech2018.aux'.
 
@@ -436,15 +439,26 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
+Missing character: There is no â in font ptmri7t!
+Missing character: There is no € in font ptmri7t!
+Missing character: There is no “ in font ptmri7t!
+Missing character: There is no â in font ptmri7t!
+Missing character: There is no € in font ptmri7t!
+Missing character: There is no “ in font ptmri7t!
+
+Underfull \hbox (badness 1117) in paragraph at lines 110--111
+[]\OT1/ptm/m/it/9 Experiments were per-formed for eleven Ro-mance lan-
+ []
+
 <figs/tree-net.png, id=1, 1385.175pt x 1000.73875pt>
 File: figs/tree-net.png Graphic file (type png)
 <use figs/tree-net.png>
-Package pdftex.def Info: figs/tree-net.png  used on input line 55. on input lin
-e 55.
+Package pdftex.def Info: figs/tree-net.png  used on input line 120. on input li
+ne 120.
 Package pdftex.def Info: Requested size: 241.84842pt x 174.71962pt on input lin
-e 55.
+e 120.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 54--58
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 119--123
  []$[]$ 
  []
 
@@ -452,7 +466,19 @@ Overfull \hbox (14.22638pt too wide) in paragraph at lines 54--58
 
 
 
- <./figs/tree-net.png>]
+]
+<figs/levels.png, id=14, 1596.96625pt x 512.91624pt>
+File: figs/levels.png Graphic file (type png)
+<use figs/levels.png>
+Package pdftex.def Info: figs/levels.png  used on input line 185. on input line
+ 185.
+Package pdftex.def Info: Requested size: 241.84842pt x 77.67763pt on input line
+ 185.
+
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 184--188
+ []$[]$ 
+ []
+
 
 ! Package textcomp Error: Symbol \textnumero not provided by
 (textcomp)                font family ptm in TS1 encoding.
@@ -462,89 +488,24 @@ See the textcomp package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.124 ... Detail} & \textbf{ \textnumero~of Tasks}
+l.204 ... Detail} & \textbf{ \textnumero~of Tasks}
                                                   \\
 ? 
-<figs/atai-baseline.png, id=15, 462.528pt x 346.896pt>
-File: figs/atai-baseline.png Graphic file (type png)
-<use figs/atai-baseline.png>
-Package pdftex.def Info: figs/atai-baseline.png  used on input line 173. on inp
-ut line 173.
-Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 173.
-
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 172--176
- []$[]$ 
- []
-
-<figs/atai-libritriphones.png, id=16, 462.528pt x 346.896pt>
-File: figs/atai-libritriphones.png Graphic file (type png)
-<use figs/atai-libritriphones.png>
-Package pdftex.def Info: figs/atai-libritriphones.png  used on input line 185. 
-on input line 185.
-Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 185.
-
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 184--188
- []$[]$ 
- []
-
-<figs/atai-libritriphones-10-to-1.png, id=17, 462.528pt x 346.896pt>
-File: figs/atai-libritriphones-10-to-1.png Graphic file (type png)
-<use figs/atai-libritriphones-10-to-1.png>
-Package pdftex.def Info: figs/atai-libritriphones-10-to-1.png  used on input li
-ne 194. on input line 194.
-Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 194.
-
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 193--197
- []$[]$ 
- []
-
-<figs/atai-librimonophones.png, id=18, 462.528pt x 346.896pt>
-File: figs/atai-librimonophones.png Graphic file (type png)
-<use figs/atai-librimonophones.png>
-Package pdftex.def Info: figs/atai-librimonophones.png  used on input line 206.
- on input line 206.
-Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 206.
-
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 205--209
- []$[]$ 
- []
-
-[2 <./figs/atai-baseline.png>]
-<figs/atai-libritriphones-librimonophones.png, id=26, 462.528pt x 346.896pt>
-File: figs/atai-libritriphones-librimonophones.png Graphic file (type png)
-<use figs/atai-libritriphones-librimonophones.png>
-Package pdftex.def Info: figs/atai-libritriphones-librimonophones.png  used on 
-input line 222. on input line 222.
-Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 222.
-
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 221--225
- []$[]$ 
- []
-
-[3 <./figs/atai-libritriphones.png> <./figs/atai-libritriphones-10-to-1.png> <.
-/figs/atai-librimonophones.png> <./figs/atai-libritriphones-librimonophones.png
->]
+[2 <./figs/tree-net.png> <./figs/levels.png>]
 No file MEYER_interspeech2018.bbl.
-[4
-
-] (./MEYER_interspeech2018.aux)
+[3] (./MEYER_interspeech2018.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5021 strings out of 492990
- 74776 string characters out of 6135005
- 137038 words of memory out of 5000000
- 8442 multiletter control sequences out of 15000+600000
+ 5001 strings out of 492990
+ 74000 string characters out of 6135005
+ 138038 words of memory out of 5000000
+ 8426 multiletter control sequences out of 15000+600000
  27353 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,7n,77p,763b,406s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,7n,77p,763b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texli
 ve/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
@@ -555,10 +516,10 @@ are/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on MEYER_interspeech2018.pdf (4 pages, 357786 bytes).
+Output written on MEYER_interspeech2018.pdf (3 pages, 204035 bytes).
 PDF statistics:
- 68 PDF objects out of 1000 (max. 8388607)
- 40 compressed objects within 1 object stream
+ 57 PDF objects out of 1000 (max. 8388607)
+ 38 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

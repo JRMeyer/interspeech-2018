@@ -29,10 +29,9 @@ Previous work has shown that performance for a low-resource language on speech r
 
 The targets for this addititional language have always been states of context-dependent triphones, defined by some tree clustering algorithm. This current research builds off the intuition that triphones encode information which is too fine-grained to be maximally useful for language-transfer. Using a higher-level of linguistic abstraction (eg. the monophone), we are able to better extract the kind of language-general information useful in training an acoustic model for some target language.
 
-To put it another way, if we want to lower Word Error Rates for a language like Urdu, learning to distinguish different versions of English [th] in context is probably not very useful. A better way to make use of English data would be to focus on distinguishing more common linguistic contrasts like [p vs b]. In adding an additional language as an auxialilary task, it would be better to focus on distinctions which are robust and will transfer well to a new, target language.
+The intuition being that when adding a source language as an auxialilary task, it would be better to focus on source-language distinctions which are robust and will transfer well to a new, target language.
 
-
-The tasks are created by redefining the parameters of the HMM-GMM system used to bootstrap a DNN-hybrid system, such that the phonetic decision tree is cut short.
+Each auxiliary task is created by redefining the parameters of the HMM-GMM system used to bootstrap a DNN-hybrid system, such that the phonetic decision tree is cut short.
 
 The target language is Kyrgyz, and the source language is English. Both data come from audiobooks, English being from LibriSpeech and Kyrgyz from the Bizdin.kg project.
 
@@ -41,8 +40,74 @@ The target language is Kyrgyz, and the source language is English. Both data com
 
 \section{Background Literature}
 
-Past attempts at MTL
 
+
+
+Mohan \& Rose 2015 ICASSP
+
+Mostly they improve memory efficiency... use senomes.
+
+\textit{  A relative improvement of 8.9\% was
+observed with the multi-lingual DNN system over the mono-lingual
+hybrid DNN-HMM system on the German evaluation set. To reduce
+computational complexity, a low-rank matrix factorization (LRMF)
+of the weight matrices in the final layer was proposed.}
+
+
+
+
+
+Huang etal 2015 Interspeech Rapid Adaptation for Deep Neural Networks through Multi-Task Learning:
+
+Monolingual (WSJ) -- looking at adaptation techniques
+
+\textit{auxiliary output layers modeling
+broad acoustic units, such as mono-phones or tied-state (often
+called senone) clusters.}
+
+
+
+
+Seltzer Droppo 2013:
+
+Multitask TIMIT with three aux tasks:
+
+\textit{. In the first system,
+prediction of the phoneme identity is used as the secondary task.
+This enables acoustic states to learn which acoustic states may be
+similar via their shared common source phone. The second system
+uses the previous and subsequent acoustic states as secondary tasks,
+which informs the network about the temporal evolution of the la-
+bels. Finally, the third proposed system uses the prediction of left
+and right phonetic context as the secondary tasks. This enables the
+network to learn about context dependency during training, while
+still using simple context-independent acoustic model in decoding}
+
+
+
+
+Chen, Mak, Leung, Sivadas 2014
+
+Low-resource MTL (no source language)
+
+\textit{we try to improve the phonetic models of a low-resource language by using only its own language resources without relying on finding a good mapping between its phonemes and phonemes from other languages which is sometimes not easily achieved.}
+
+
+Grezl and Karafiat (2017)
+
+Using single Source Language.
+
+More states == better (i think that's because more states is a harder task, and doesn't overfit as fast)
+
+\textit{In this paper, we analyze the feasibility of using single well-resourced language – English – as a source language for multilingual techniques in context of Stacked Bottle-Neck tandem system.}
+
+
+
+Multilingual DNN: Heigold 2013 et al.
+
+Multi-task, but only triphones.
+
+\textit{Experiments were performed for eleven Romance languages with a total amount  of  10k  hours  of  data.}
 
 \section{DNN-Hybrid Training as Model Transfer}
 
@@ -87,8 +152,6 @@ Two speech corpora are used in the following experiments:
 \subsubsection{Decision Trees}
 All models were build using the Kaldi \texttt{nnet3} approach. The scripts used in this paper can be found at (XXX). These scripts are based on the offical repo multilingual Babel scripts here (XXX).
 
-The initial decision tree parameters were found independently for English and Kyrgyz, and were chosen to maximize performance on a held out test set of data for each language.
-
 In GMM training, monophones (for each language) were allotted 1,000 Gaussian components, and trained over 25 iterations of EM. These monophones were then expanded into context-dependent triphones via a phonetic decision tree, with a maximum of 2,000 leaves \& 5,000 Gaussians (LibriSpeech reached 1584 leaves, and Kyrgyz reached 752). The resulting tied-state clusters (ie. leaves) are then trained as context-dedendent triphones over 25 iterations of EM.
 
 
@@ -111,7 +174,24 @@ During testing, \textit{only one} of the tasks (ie. the main task) is used. The 
 
 \textbf{Auxiliary Tasks}
 
-The auxiliary tasks all related to the English language data from the LibriSpeech corpus. Investigating the intuition that labels generated by a standard triphone phonetic decision tree are not the best representation of data for transfer learning, the auxiliary tasks here investigate different levels in the decision tree's branches. By forcing the neural net to recognize higher levels in the tree, we will learn representations which are more abstract, and therefore more likely to be relevant multi-lingually. 
+The auxiliary tasks all related to the English language data from the LibriSpeech corpus. Investigating the intuition that labels generated by a standard triphone phonetic decision tree are not the best representation of data for transfer learning, the auxiliary tasks here investigate different levels in the decision tree's branches. I split the LibriSpeech phonetic decision tree into three logical parts: (1) roots == monophones; leaves == triphones; branches == ``half''-phones.
+
+
+
+
+\begin{figure}[!htbp]
+  \centering
+\minipage{0.5\textwidth}
+  \includegraphics[width=\linewidth]{figs/levels.png}
+  \caption{Logical Tree Parts}
+\endminipage\hfill
+\end{figure}
+
+
+The ``half''-phones were created by halving the optimal number of leaves from the triphone system (ie. 1584 leaves) and re-training a new GMM-HMM system with half the optimal number of leaves (1/2 * 1584 = 792 leaves). All the other parameters were left unchanged (number of Gaussian components, iterations of EM, etc.). 
+
+
+By forcing the neural net to recognize higher levels in the tree, we will learn representations which are more abstract, and therefore more likely to be relevant multi-lingually. 
 
 Each of the following tasks were trained on the 5 hour section of LibriSpeech corpus. They are included as an extra output layer in the TDNN.
 
@@ -164,112 +244,6 @@ The addition of each above task adds approximately 5 hours of training data to t
 
 All results are performed on the same held-out section of Kyrgyz audiobook. The bigram language model, lexicon, and main-task decision tree are build into a standard decoding graph in the traditional Kaldi style. Decoding is performed with a bigram backoff language model trained on a Wikipedia Kyrgyz dump, and contains, 103,998 unigrams and 56,6871 bigrams.
 
-5-layer, 500 dimensial hidden layer, 10 epoch results:
-
-
-\begin{figure}[!htb]
-  \centering
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{figs/atai-baseline.png}
-  \caption{Baseline Model}
-\endminipage\hfill
-\end{figure}
-
-As we can see, the baseline model overfits to the training data after about 250 iterations. The performance for the final model (clearly would be beat out if we used early stopping) is 53.66\% WER on decoding the held-out test data.
-
-
-
-\begin{figure}[!htb]
-  \centering
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{figs/atai-libritriphones.png}
-  \caption{Aux Task == LibriSpeech Triphones}
-\endminipage\hfill
-\end{figure}
-
-
-\begin{figure}[!htb]
-  \centering
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{figs/atai-libritriphones-10-to-1.png}
-  \caption{Aux Task == LibriSpeech + Triphones // 10-to-1}
-\endminipage\hfill
-\end{figure}
-
-
-
-Above, we see the addition of triphones as an auxiliary task from the LibriSpeech corpus. Overfit to Atai after 500 iterations. The performance for the final model (clearly would be beat out if we used early stopping) is 49.85\% WER on decoding the held-out test data.
-
-\begin{figure}[!htb]
-  \centering
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{figs/atai-librimonophones.png}
-  \caption{Aux Task == LibriSpeech Monophones}
-\endminipage\hfill
-\end{figure}
-
-
-Finally, monophones from the LibriSpeech corpus. Overfit to Atai after 500 iterations. The performance for the final model (clearly would be beat out if we used early stopping) is 51.32\% WER on decoding the held-out test data.
-
-
-
-Here we are with the last model:
-
-
-\begin{figure}[!htb]
-  \centering
-\minipage{0.5\textwidth}
-  \includegraphics[width=\linewidth]{figs/atai-libritriphones-librimonophones.png}
-  \caption{Aux Task == LibriSpeech Monophones + Triphones}
-\endminipage\hfill
-\end{figure}
-
-
-
-
-
-
-\begin{table}[!htbp]
-  \centering
-    \caption{5-to-1 Weighting // 5-layer // 10 epoch // 500-dim}
-  \begin{adjustbox}{width=.45\textwidth}
-    \begin{tabular}{lc}
-      \toprule
-      \textbf{Tasks} & \textbf{WER\%}\\
-      \midrule
-      Atai + Atai (STL Baseline) &  51.54\% \\
-      Atai + Libri-Triphones & 52.29 \%  \\
-      Atai + Libri-Monophones & 50.93 \% \\
-      Atai + Libri-Monophones + Libri-Triphones & 50.44 \%  \\
-      \bottomrule
-    \end{tabular}
-    \label{table:data}
-  \end{adjustbox}
-\end{table}
-
-
-
-\begin{table}[!htbp]
-  \centering
-    \caption{10-to-1 Weighting // 5-layer // 10 epoch // 500-dim}
-  \begin{adjustbox}{width=.45\textwidth}
-    \begin{tabular}{lc}
-      \toprule
-      \textbf{Tasks} & \textbf{WER\%}\\
-      \midrule
-      Atai + Atai (STL Baseline) &  51.54\% \\
-      Atai + Libri-Triphones & 51.51 \%  \\
-      Atai + Libri-Monophones & 53.66 \% \\
-      Atai + Libri-Monophones + Libri-Triphones & 53.46 \%  \\
-      \bottomrule
-    \end{tabular}
-    \label{table:data}
-  \end{adjustbox}
-\end{table}
-
-
-
-Takeaways from 500-dim // 5-epoch // 2-to-1 weighting:
 
 \begin{enumerate}
 \item Addition of LibriSpeech beats out Kyrgyz-only.
@@ -283,6 +257,73 @@ Takeaways from 500-dim // 5-epoch // 2-to-1 weighting:
   \item only train on 30 minutes of Krygyz... more likely to find an effect
 \end{enumerate}
 
+
+
+
+\begin{table}[!htbp]
+  \centering
+    \caption{1-to-2 Weighting // 5-layer // 500-dim //  10 epoch }
+  \begin{adjustbox}{width=.45\textwidth}
+    \begin{tabular}{lc}
+      \toprule
+      \textbf{Auxiliary (Source Lang) Tasks} & \textbf{WER\%}\\
+      \midrule
+      STL Baseline &  \% \\
+      Monophones &  \% \\
+      Halfphones &  \% \\
+      Triphones &  \%  \\
+      Monophones + Halfphones & \%  \\
+      Halfphones + Triphones & \%  \\
+      Monophones + Halfphones + Halfphones & \%  \\
+      \bottomrule
+    \end{tabular}
+    \label{table:data}
+  \end{adjustbox}
+\end{table}
+
+
+\begin{table}[!htbp]
+  \centering
+    \caption{1-to-1 Weighting // 5-layer // 500-dim //  10 epoch }
+  \begin{adjustbox}{width=.45\textwidth}
+    \begin{tabular}{lc}
+      \toprule
+      \textbf{Auxiliary (Source Lang) Tasks} & \textbf{WER\%}\\
+      \midrule
+      STL Baseline &  \% \\
+      Monophones &  \% \\
+      Halfphones &  \% \\
+      Triphones &  \%  \\
+      Monophones + Halfphones & \%  \\
+      Halfphones + Triphones & \%  \\
+      Monophones + Halfphones + Halfphones & \%  \\
+      \bottomrule
+    \end{tabular}
+    \label{table:data}
+  \end{adjustbox}
+\end{table}
+
+
+\begin{table}[!htbp]
+  \centering
+    \caption{2-to-1 Weighting // 5-layer // 500-dim //  10 epoch }
+  \begin{adjustbox}{width=.45\textwidth}
+    \begin{tabular}{lc}
+      \toprule
+      \textbf{Auxiliary (Source Lang) Tasks} & \textbf{WER\%}\\
+      \midrule
+      STL Baseline &  \% \\
+      Monophones &  \% \\
+      Halfphones &  \% \\
+      Triphones &  \%  \\
+      Monophones + Halfphones & \%  \\
+      Halfphones + Triphones & \%  \\
+      Monophones + Halfphones + Halfphones & \%  \\
+      \bottomrule
+    \end{tabular}
+    \label{table:data}
+  \end{adjustbox}
+\end{table}
 
 
 
