@@ -4,6 +4,7 @@
 \usepackage{booktabs}
 \usepackage{adjustbox}
 \usepackage{multirow}
+\usepackage{textcomp}
 
 \title{Multilingual Multi-Task Learning for Low-Resource Acoustic Modeling}
 
@@ -62,38 +63,41 @@ Given that standard triphones encode very fine-grained information which may not
 
 \section{Experiments}
 
+This work investigates the application of MTL technique to low resource acoustic modeling. All experiments relate to simulate a common development scenario: there exists little transcribed data for the target language, but lots of data in some source language.
+
+The following experiments tease out (1) the level of detail at which the source language should be modeled and (2) the amount of weighting which should be given to the target language training examples.
+
+The first point of interest: level of detail at which the source language should be modeled. This is investigated via addition of multiple tasks to the TDNN during backprop. Intuitively, we can model the source language with lots of contextual detail (ie. the triphone), with abstracted, context-independent detail (ie. the monophone), or somewhere in between (ie. the half-phone). Given the traditional ASR training pipeline, investigating these levels of representation are easily acheived via the phonetic decision tree.
+
+The second point of interest: relative weighting of target:source training examples. It is clear that if we train multiple languages in parallel, the source language (given many more training samples) will dominate the target language in the fight for influence during backprop. This could be a good thing or a bad thing, and to investigate it further, I examine the following weighting schemes: 1:2 target:source; 1:1 target:source; 2:1 target:source. These weights are instantiated during backprop as a weight to the gradient for each training example. For example, given 1000 hours of source language and 1 hour of target language, to acheive a 1:1 ratio in backprop, I would multiple the gradient from the target language by 1000. 
+
+
+
 \subsection{Data}
 
 Two speech corpora are used in the following experiments:
 
 \begin{enumerate}
-\item LibriSpeech selection (5 hours)
-\item Kyrgyz audiobook section (1.5 hours)
+\item $\approx$ 5 hours of LibriSpeech (4.86 hours)
+\item $\approx$ 1.5 hours of Kyrgyz audiobook (1.59 hours)
 \end{enumerate}
 
 \subsection{Model Building}
 
+\subsubsection{Decision Trees}
 All models were build using the Kaldi \texttt{nnet3} approach. The scripts used in this paper can be found at (XXX). These scripts are based on the offical repo multilingual Babel scripts here (XXX).
 
-In GMM training, monophones were allotted a total of 1000 Gaussian components and trained over 25 iterations of EM. These monophones were then expanded into context-dependent triphones via a phonetic decision tree, with a maximum of 1000 leaves (ie. tied-states). The resulting leaves (state clusters) are then trained as context-dedendent triphones with a total of 2000 Gaussian components over 25 iterations of EM.
+The initial decision tree parameters were found independently for English and Kyrgyz, and were chosen to maximize performance on a held out test set of data for each language.
 
-Given the alignments from the GMM-HMM models, a 5-layer, 200-dimensional TDNN is trained over 5 epochs of backprop on a single GPU instance.
-
-Each auxiliary task is implemented as a separate output layer along with a penultimate hidden layer. All other hidden layers are trained in parallel. 
-
-\subsubsection{English}
-
-Using the standard CMUDict phoneset, 3-state monophones are trained from a flat-start via EM training, and then expanded into triphones via Kaldi's decision tree.
-
-\subsubsection{Kyrgyz}
-
-The Kyrgyz phoneset can be found here (XXX). The transcriptions are basically a simple grapheme set, with predictable variation (allophony) explicitly encoded. For example, the letter K is pronounced as [q] in the context of back vowels, and in the context of front vowels it is pronounced [k]. The phoneme set includes both [q] and [k].
-
-Decoding is performed with a bigram backoff language model was trained on a Wikipedia Kyrgyz dump, and contains, 103,998 unigrams and 56,6871 bigrams.
+In GMM training, monophones (for each language) were allotted 1,000 Gaussian components, and trained over 25 iterations of EM. These monophones were then expanded into context-dependent triphones via a phonetic decision tree, with a maximum of 2,000 leaves \& 5,000 Gaussians (LibriSpeech reached 1584 leaves, and Kyrgyz reached 752). The resulting tied-state clusters (ie. leaves) are then trained as context-dedendent triphones over 25 iterations of EM.
 
 
+\subsubsection{Multi-Task Neural Net Acoustic Models}
 
-Because I am interested in the application of this MTL technique to low resource languages, I examine how much the performance boost from the source language changes with regards to the size of the training data for the target language.
+Given the alignments from the GMM-HMM models, a 5-layer, 500-dimensional TDNN is trained over 5 epochs of backprop on a single GPU instance.
+
+Each auxiliary task is implemented as a separate output layer along with a separate, penultimate hidden layer. All other hidden layers of the TDNN are trained in parallel.
+
 
 
 \textbf{Baseline}
@@ -109,10 +113,56 @@ During testing, \textit{only one} of the tasks (ie. the main task) is used. The 
 
 The auxiliary tasks all related to the English language data from the LibriSpeech corpus. Investigating the intuition that labels generated by a standard triphone phonetic decision tree are not the best representation of data for transfer learning, the auxiliary tasks here investigate different levels in the decision tree's branches. By forcing the neural net to recognize higher levels in the tree, we will learn representations which are more abstract, and therefore more likely to be relevant multi-lingually. 
 
+Each of the following tasks were trained on the 5 hour section of LibriSpeech corpus. They are included as an extra output layer in the TDNN.
+
+\begin{table}[!htbp]
+  \centering
+    \caption{Auxiliary Tasks}
+  \begin{adjustbox}{width=.45\textwidth}
+    \begin{tabular}{lcc}
+      \toprule
+      \textbf{Logical Tree Part} & \textbf{Level of Phonetic Detail} & \textbf{ \textnumero~of Tasks}\\
+      \midrule
+      Roots & Monophones & 1\\
+      Branches & Half-phones & 1\\
+      Leaves & Triphones & 1\\ 
+      Lower Tree & Monophones + Half-phones & 2\\
+      Upper Tree & Half-phones + Triphones & 2\\
+      Whole Tree & Monophones + Half-phones + Triphones & 3\\
+      \bottomrule
+    \end{tabular}
+    \label{table:data}
+  \end{adjustbox}
+\end{table}
+
+
+
+The addition of each above task adds approximately 5 hours of training data to the standard training of a Single Task Model on Kyrgyz. As such, a weighting procedure was used to balance the relative influence of source vs. target training data on backprop. For example, to reach a one-to-one ratio, where one hour of Kyrgyz is equal to one hour of English, I multiplied every Kyrgyz gradient by $3.06$.
+
+\begin{table}[!htbp]
+  \centering
+    \caption{Target:Source Data Weighting Scheme}
+  \begin{adjustbox}{width=.3\textwidth}
+    \begin{tabular}{cc}
+      \toprule
+      \textbf{Target:Source Ratio} & \textbf{Target Weight}\\
+      \midrule
+      1:2 & 1.53x  \\
+      1:1 & 3.06x  \\
+      2:1 & 6.11x  \\
+      \bottomrule
+    \end{tabular}
+    \label{table:data}
+  \end{adjustbox}
+\end{table}
+
+
+
+
 \subsection{Results}
 
 
-All results are performed on the same held-out section of Kyrgyz audiobook. The bigram language model, lexicon, and main-task decision tree are build into a standard decoding graph in the traditional Kaldi style.
+All results are performed on the same held-out section of Kyrgyz audiobook. The bigram language model, lexicon, and main-task decision tree are build into a standard decoding graph in the traditional Kaldi style. Decoding is performed with a bigram backoff language model trained on a Wikipedia Kyrgyz dump, and contains, 103,998 unigrams and 56,6871 bigrams.
 
 5-layer, 500 dimensial hidden layer, 10 epoch results:
 

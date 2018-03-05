@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  4 MAR 2018 05:53
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  5 MAR 2018 08:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -312,28 +312,34 @@ Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 
 LaTeX Warning: Label `table:data' multiply defined.
 
+
+LaTeX Warning: Label `table:data' multiply defined.
+
+
+LaTeX Warning: Label `table:data' multiply defined.
+
 )
 \openout1 = `MEYER_interspeech2018.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 16.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 16.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 17.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -410,35 +416,35 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 19.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 18.
-LaTeX Font Info:    Try loading font information for U+msa on input line 18.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 19.
+LaTeX Font Info:    Try loading font information for U+msa on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 18.
+LaTeX Font Info:    Try loading font information for U+msb on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 18.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 20.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
 <figs/tree-net.png, id=1, 1385.175pt x 1000.73875pt>
 File: figs/tree-net.png Graphic file (type png)
 <use figs/tree-net.png>
-Package pdftex.def Info: figs/tree-net.png  used on input line 54. on input lin
-e 54.
+Package pdftex.def Info: figs/tree-net.png  used on input line 55. on input lin
+e 55.
 Package pdftex.def Info: Requested size: 241.84842pt x 174.71962pt on input lin
-e 54.
+e 55.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 53--57
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 54--58
  []$[]$ 
  []
 
@@ -447,27 +453,39 @@ Overfull \hbox (14.22638pt too wide) in paragraph at lines 53--57
 
 
  <./figs/tree-net.png>]
+
+! Package textcomp Error: Symbol \textnumero not provided by
+(textcomp)                font family ptm in TS1 encoding.
+(textcomp)                Default family used instead.
+
+See the textcomp package documentation for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.124 ... Detail} & \textbf{ \textnumero~of Tasks}
+                                                  \\
+? 
 <figs/atai-baseline.png, id=15, 462.528pt x 346.896pt>
 File: figs/atai-baseline.png Graphic file (type png)
 <use figs/atai-baseline.png>
-Package pdftex.def Info: figs/atai-baseline.png  used on input line 123. on inp
-ut line 123.
+Package pdftex.def Info: figs/atai-baseline.png  used on input line 173. on inp
+ut line 173.
 Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 123.
+e 173.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 122--126
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 172--176
  []$[]$ 
  []
 
 <figs/atai-libritriphones.png, id=16, 462.528pt x 346.896pt>
 File: figs/atai-libritriphones.png Graphic file (type png)
 <use figs/atai-libritriphones.png>
-Package pdftex.def Info: figs/atai-libritriphones.png  used on input line 135. 
-on input line 135.
+Package pdftex.def Info: figs/atai-libritriphones.png  used on input line 185. 
+on input line 185.
 Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 135.
+e 185.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 134--138
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 184--188
  []$[]$ 
  []
 
@@ -475,65 +493,72 @@ Overfull \hbox (14.22638pt too wide) in paragraph at lines 134--138
 File: figs/atai-libritriphones-10-to-1.png Graphic file (type png)
 <use figs/atai-libritriphones-10-to-1.png>
 Package pdftex.def Info: figs/atai-libritriphones-10-to-1.png  used on input li
-ne 144. on input line 144.
+ne 194. on input line 194.
 Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 144.
+e 194.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 143--147
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 193--197
  []$[]$ 
  []
 
 <figs/atai-librimonophones.png, id=18, 462.528pt x 346.896pt>
 File: figs/atai-librimonophones.png Graphic file (type png)
 <use figs/atai-librimonophones.png>
-Package pdftex.def Info: figs/atai-librimonophones.png  used on input line 156.
- on input line 156.
+Package pdftex.def Info: figs/atai-librimonophones.png  used on input line 206.
+ on input line 206.
 Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 156.
+e 206.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 155--159
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 205--209
  []$[]$ 
  []
 
-<figs/atai-libritriphones-librimonophones.png, id=19, 462.528pt x 346.896pt>
+[2 <./figs/atai-baseline.png>]
+<figs/atai-libritriphones-librimonophones.png, id=26, 462.528pt x 346.896pt>
 File: figs/atai-libritriphones-librimonophones.png Graphic file (type png)
 <use figs/atai-libritriphones-librimonophones.png>
 Package pdftex.def Info: figs/atai-libritriphones-librimonophones.png  used on 
-input line 172. on input line 172.
+input line 222. on input line 222.
 Package pdftex.def Info: Requested size: 241.84842pt x 181.38736pt on input lin
-e 172.
+e 222.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 171--175
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 221--225
  []$[]$ 
  []
 
-[2 <./figs/atai-baseline.png> <./figs/atai-libritriphones.png> <./figs/atai-lib
-ritriphones-10-to-1.png>]
+[3 <./figs/atai-libritriphones.png> <./figs/atai-libritriphones-10-to-1.png> <.
+/figs/atai-librimonophones.png> <./figs/atai-libritriphones-librimonophones.png
+>]
 No file MEYER_interspeech2018.bbl.
-[3 <./figs/atai-librimonophones.png> <./figs/atai-libritriphones-librimonophone
-s.png>] (./MEYER_interspeech2018.aux)
+[4
+
+] (./MEYER_interspeech2018.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5018 strings out of 492990
- 74740 string characters out of 6135005
- 136038 words of memory out of 5000000
- 8440 multiletter control sequences out of 15000+600000
- 27012 words of font info for 72 fonts, out of 8000000 for 9000
+ 5021 strings out of 492990
+ 74776 string characters out of 6135005
+ 137038 words of memory out of 5000000
+ 8442 multiletter control sequences out of 15000+600000
+ 27353 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,7n,77p,621b,406s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
-/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on MEYER_interspeech2018.pdf (3 pages, 332465 bytes).
+ 43i,7n,77p,763b,406s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texli
+ve/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmsy9.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx0900.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
+s/utmri8a.pfb>
+Output written on MEYER_interspeech2018.pdf (4 pages, 357786 bytes).
 PDF statistics:
- 52 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 68 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
