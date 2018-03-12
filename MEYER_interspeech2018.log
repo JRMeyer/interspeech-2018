@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  6 MAR 2018 15:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  12 MAR 2018 08:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -315,12 +315,6 @@ LaTeX Warning: Label `table:data' multiply defined.
 
 LaTeX Warning: Label `table:data' multiply defined.
 
-
-LaTeX Warning: Label `table:data' multiply defined.
-
-
-LaTeX Warning: Label `table:data' multiply defined.
-
 )
 \openout1 = `MEYER_interspeech2018.aux'.
 
@@ -493,7 +487,9 @@ l.204 ... Detail} & \textbf{ \textnumero~of Tasks}
 ? 
 [2 <./figs/tree-net.png> <./figs/levels.png>]
 No file MEYER_interspeech2018.bbl.
-[3] (./MEYER_interspeech2018.aux)
+[3
+
+] (./MEYER_interspeech2018.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
@@ -501,11 +497,11 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  5001 strings out of 492990
  74000 string characters out of 6135005
- 138038 words of memory out of 5000000
+ 137038 words of memory out of 5000000
  8426 multiletter control sequences out of 15000+600000
  27353 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,7n,77p,763b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,77p,763b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texli
 ve/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
@@ -516,7 +512,7 @@ are/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on MEYER_interspeech2018.pdf (3 pages, 204094 bytes).
+Output written on MEYER_interspeech2018.pdf (3 pages, 202010 bytes).
 PDF statistics:
  57 PDF objects out of 1000 (max. 8388607)
  38 compressed objects within 1 object stream

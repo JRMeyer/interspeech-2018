@@ -262,19 +262,20 @@ All results are performed on the same held-out section of Kyrgyz audiobook. The 
 
 \begin{table}[!htbp]
   \centering
-    \caption{1-to-2 Weighting // 5-layer // 500-dim //  10 epoch }
+    \caption{TDNN // 5-layer // 500-dim //  10 epoch }
   \begin{adjustbox}{width=.45\textwidth}
-    \begin{tabular}{lc}
+    \begin{tabular}{lccc}
       \toprule
-      \textbf{Auxiliary (Source Lang) Tasks} & \textbf{WER\%}\\
+      & \multicolumn{3}{c}{\textbf{Target:Source Weighting}} \\
+      \textbf{Auxiliary (Source Lang) Tasks} & \textit{1-to-2} & \textit{1-to-1} & \textit{2-to-1}\\
       \midrule
-      STL Baseline                          &  50.54\% \\
-      Monophones                            &  47.41\% \\
-      Halfphones                            &  48.68\% \\
-      Triphones                             &  46.73\%  \\
-      Monophones + Halfphones               &  48.10\%  \\
-      Halfphones + Triphones                &  47.90\%  \\
-      Monophones + Halfphones + Halfphones  &  \%  \\
+      STL Baseline                          &  \multicolumn{3}{c}{50.54}  \\
+      Monophones                            &  47.41  & 47.32 &  \\
+      Halfphones                            &  48.68  & 46.73 & \\
+      Triphones                             &  46.73  & 47.12 & \\
+      Monophones + Halfphones               &  48.10  & 48.49 & \\
+      Halfphones + Triphones                &  47.90  & 48.00 & \\
+      Monophones + Halfphones + Halfphones  &  48.59  & 48.20 & \\
       \bottomrule
     \end{tabular}
     \label{table:data}
@@ -282,48 +283,6 @@ All results are performed on the same held-out section of Kyrgyz audiobook. The 
 \end{table}
 
 
-\begin{table}[!htbp]
-  \centering
-    \caption{1-to-1 Weighting // 5-layer // 500-dim //  10 epoch }
-  \begin{adjustbox}{width=.45\textwidth}
-    \begin{tabular}{lc}
-      \toprule
-      \textbf{Auxiliary (Source Lang) Tasks} & \textbf{WER\%}\\
-      \midrule
-      STL Baseline &  \% \\
-      Monophones &  \% \\
-      Halfphones &  \% \\
-      Triphones &  \%  \\
-      Monophones + Halfphones & \%  \\
-      Halfphones + Triphones & \%  \\
-      Monophones + Halfphones + Halfphones & \%  \\
-      \bottomrule
-    \end{tabular}
-    \label{table:data}
-  \end{adjustbox}
-\end{table}
-
-
-\begin{table}[!htbp]
-  \centering
-    \caption{2-to-1 Weighting // 5-layer // 500-dim //  10 epoch }
-  \begin{adjustbox}{width=.45\textwidth}
-    \begin{tabular}{lc}
-      \toprule
-      \textbf{Auxiliary (Source Lang) Tasks} & \textbf{WER\%}\\
-      \midrule
-      STL Baseline &  \% \\
-      Monophones &  \% \\
-      Halfphones &  \% \\
-      Triphones &  \%  \\
-      Monophones + Halfphones & \%  \\
-      Halfphones + Triphones & \%  \\
-      Monophones + Halfphones + Halfphones & \%  \\
-      \bottomrule
-    \end{tabular}
-    \label{table:data}
-  \end{adjustbox}
-\end{table}
 
 
 
