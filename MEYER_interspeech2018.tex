@@ -214,26 +214,32 @@ All results are performed on the same held-out section of Kyrgyz audiobook. The 
 \end{enumerate}
 
 
+The below table shows Word Error Rates relative to the baseline, single-task model. They all show improvement over the baseline. However, the result that triphones work best is not new, and my ``half''-phones don't beat them out strictly speaking.
 
+I do see a trend with the +1 extra tasks: the more I increase the ratio of target-to-source data, the better abstract tasks perform. That is, the more data I have in the target language, the better it is to model the source language higher in the tree.
+
+What's disappointing is that none of the +2 or +3 tasks outperform the more simple, +1 tasks. I would have hoped that modeling the whole tree at all levels would perform best, but that isn't the case.
+
+The two last experiments are not done running yet, but I think they'll be worse than the other's in their column.
 
 \begin{table}[!htbp]
   \centering
-    \caption{TDNN // 5-layer // 500-dim //  10 epoch }
+  \caption{Word Error Rates (WER\%) Relative to Baseline}
   \begin{adjustbox}{width=.45\textwidth}
     \begin{tabular}{lccc}
       \toprule
       & \multicolumn{3}{c}{\textbf{Target:Source Weighting}} \\
       \textbf{Auxiliary (Source Lang) Tasks} & \textit{1-to-2} & \textit{1-to-1} & \textit{2-to-1}\\
       \midrule
-      STL Baseline                          &  \multicolumn{3}{c}{50.54}  \\
-      Monophones                            &  3.13  & 3.22 & 2.34  \\
-      Halfphones                            &  1.86  & \textbf{3.81} & 1.86 \\
-      Triphones                             &  \textbf{3.81} & 3.42 & 1.17  \\
-      Monophones + Halfphones               &  2.44  & 2.05 &  2.34\\
-      Halfphones + Triphones                &  2.64  & 2.54 & \\
-      Monophones + Halfphones + Halfphones  &  1.95  & 2.34 & \\
+      STL Baseline                          &  \multicolumn{3}{c}{50.54\% WER}  \\
+      Monophones                            &  -3.13  & -3.22 & \textbf{-2.34}  \\
+      Halfphones                            &  -1.86  & \textbf{-3.81} & -1.86 \\
+      Triphones                             &  \textbf{-3.81} & -3.42 & -1.17  \\
+      Monophones + Halfphones               &  -2.44  & -2.05 &  -2.34\\
+      Halfphones + Triphones                &  -2.64  & -2.54 & \\
+      Monophones + Halfphones + Halfphones  &  -1.95  & -2.34 & \\
       \midrule
-      AVERAGE                               &  2.64  & 2.90 & \\
+      AVERAGE                               &  -2.64  & -2.90 & \\
       \bottomrule
     \end{tabular}
     \label{table:data}
