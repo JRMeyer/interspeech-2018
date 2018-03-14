@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  13 MAR 2018 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  14 MAR 2018 09:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -308,51 +308,62 @@ Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
 \multirow@dima=\skip47
 \bigstrutjot=\dimen149
 )
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+\c@subfigure=\count108
+\c@subtable=\count109
+)
 (./MEYER_interspeech2018.aux
 
-LaTeX Warning: Label `table:data' multiply defined.
+LaTeX Warning: Label `fig:sub1' multiply defined.
 
 
-LaTeX Warning: Label `table:data' multiply defined.
+LaTeX Warning: Label `sub@fig:sub1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sub2' multiply defined.
+
+
+LaTeX Warning: Label `sub@fig:sub2' multiply defined.
 
 )
 \openout1 = `MEYER_interspeech2018.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 19.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 19.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 17.
+LaTeX Font Info:    ... okay on input line 19.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 19.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
+\scratchcounter=\count110
 \scratchdimen=\dimen150
 \scratchbox=\box30
-\nofMPsegments=\count109
-\nofMParguments=\count110
+\nofMPsegments=\count111
+\nofMParguments=\count112
 \everyMPshowfont=\toks23
-\MPscratchCnt=\count111
+\MPscratchCnt=\count113
 \MPscratchDim=\dimen151
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
+\MPnumerator=\count114
+\makeMPintoPDFobject=\count115
 \everyMPtoPDFconversion=\toks24
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -413,35 +424,35 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 19.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 19.
-LaTeX Font Info:    Try loading font information for U+msa on input line 19.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
+LaTeX Font Info:    Try loading font information for U+msa on input line 21.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 19.
+LaTeX Font Info:    Try loading font information for U+msb on input line 21.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 19.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 21.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 21.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 23.
 <figs/tree-net.png, id=1, 1385.175pt x 1000.73875pt>
 File: figs/tree-net.png Graphic file (type png)
 <use figs/tree-net.png>
-Package pdftex.def Info: figs/tree-net.png  used on input line 63. on input lin
-e 63.
+Package pdftex.def Info: figs/tree-net.png  used on input line 65. on input lin
+e 65.
 Package pdftex.def Info: Requested size: 241.84842pt x 174.71962pt on input lin
-e 63.
+e 65.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 62--66
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 64--69
  []$[]$ 
  []
 
@@ -450,35 +461,35 @@ Overfull \hbox (14.22638pt too wide) in paragraph at lines 62--66
 
 
  <./figs/tree-net.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 101--102
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 \OT1/ptm/m/n/9 All mod-els were build us-ing the Kaldi \OT1/pcr/m/n/9 nnet3 \OT
 1/ptm/m/n/9 ap-
  []
 
 
-Underfull \hbox (badness 2990) in paragraph at lines 101--102
+Underfull \hbox (badness 2990) in paragraph at lines 104--105
 \OT1/ptm/m/n/9 proach. The main neu-ral net run script used in this
  []
 
 
-Underfull \hbox (badness 6741) in paragraph at lines 101--102
+Underfull \hbox (badness 6741) in paragraph at lines 104--105
 \OT1/ptm/m/n/9 pa-per can be found at www.github.com/JRMeyer/kaldi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 101--102
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
 \OT1/ptm/m/n/9 at www.github.com/JRMeyer/kaldi-mirror/egs/kgz/kyrgyz-
  []
 
 <figs/levels.png, id=15, 1596.96625pt x 512.91624pt>
 File: figs/levels.png Graphic file (type png)
 <use figs/levels.png>
-Package pdftex.def Info: figs/levels.png  used on input line 142. on input line
- 142.
+Package pdftex.def Info: figs/levels.png  used on input line 145. on input line
+ 145.
 Package pdftex.def Info: Requested size: 253.93788pt x 81.55956pt on input line
- 142.
+ 145.
 
-Overfull \hbox (26.31584pt too wide) in paragraph at lines 141--145
+Overfull \hbox (26.31584pt too wide) in paragraph at lines 144--149
  []$[]$ 
  []
 
@@ -491,27 +502,89 @@ See the textcomp package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.159 ... Detail} & \textbf{ \textnumero~of Tasks}
+l.164 ... Detail} & \textbf{ \textnumero~of Tasks}
                                                   \\
 ? 
 [2 <./figs/levels.png>]
-Underfull \hbox (badness 2573) in paragraph at lines 210--211
+Underfull \hbox (badness 2573) in paragraph at lines 214--215
 []\OT1/ptm/m/n/9 Both lan-guages / tasks over-fit (ref-er-enc-ing frame-
  []
 
-(./MEYER_interspeech2018.bbl) [3] (./MEYER_interspeech2018.aux)
+<figs/1-to-2-mono.png, id=22, 462.528pt x 346.896pt>
+File: figs/1-to-2-mono.png Graphic file (type png)
+<use figs/1-to-2-mono.png>
+Package pdftex.def Info: figs/1-to-2-mono.png  used on input line 301. on input
+ line 301.
+Package pdftex.def Info: Requested size: 133.01736pt x 99.76093pt on input line
+ 301.
+
+Overfull \hbox (12.09315pt too wide) in paragraph at lines 301--302
+ [][] 
+ []
+
+<figs/1-to-2-tri.png, id=23, 462.528pt x 346.896pt>
+File: figs/1-to-2-tri.png Graphic file (type png)
+<use figs/1-to-2-tri.png>
+Package pdftex.def Info: figs/1-to-2-tri.png  used on input line 307. on input 
+line 307.
+Package pdftex.def Info: Requested size: 133.01736pt x 99.76093pt on input line
+ 307.
+
+Overfull \hbox (12.09315pt too wide) in paragraph at lines 307--308
+ [][] 
+ []
+
+
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 299--311
+ []$[]$$[]$ 
+ []
+
+[3 <./figs/1-to-2-mono.png> <./figs/1-to-2-tri.png>]
+<figs/2-to-1-mono.png, id=30, 462.528pt x 346.896pt>
+File: figs/2-to-1-mono.png Graphic file (type png)
+<use figs/2-to-1-mono.png>
+Package pdftex.def Info: figs/2-to-1-mono.png  used on input line 330. on input
+ line 330.
+Package pdftex.def Info: Requested size: 133.01736pt x 99.76093pt on input line
+ 330.
+
+Overfull \hbox (12.09315pt too wide) in paragraph at lines 330--331
+ [][] 
+ []
+
+<figs/2-to-1-tri.png, id=31, 462.528pt x 346.896pt>
+File: figs/2-to-1-tri.png Graphic file (type png)
+<use figs/2-to-1-tri.png>
+Package pdftex.def Info: figs/2-to-1-tri.png  used on input line 336. on input 
+line 336.
+Package pdftex.def Info: Requested size: 133.01736pt x 99.76093pt on input line
+ 336.
+
+Overfull \hbox (12.09315pt too wide) in paragraph at lines 336--337
+ [][] 
+ []
+
+
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 328--340
+ []$[]$$[]$ 
+ []
+
+[4 <./figs/2-to-1-mono.png> <./figs/2-to-1-tri.png>]
+(./MEYER_interspeech2018.bbl) [5
+
+] (./MEYER_interspeech2018.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5026 strings out of 492990
- 74353 string characters out of 6135005
- 137062 words of memory out of 5000000
- 8447 multiletter control sequences out of 15000+600000
- 30622 words of font info for 77 fonts, out of 8000000 for 9000
+ 5116 strings out of 492990
+ 75885 string characters out of 6135005
+ 141421 words of memory out of 5000000
+ 8530 multiletter control sequences out of 15000+600000
+ 32207 words of font info for 79 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,8n,77p,804b,406s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,77p,809b,517s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texli
 ve/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
@@ -522,10 +595,10 @@ are/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmri8a.pfb>
-Output written on MEYER_interspeech2018.pdf (3 pages, 205918 bytes).
+Output written on MEYER_interspeech2018.pdf (5 pages, 369024 bytes).
 PDF statistics:
- 57 PDF objects out of 1000 (max. 8388607)
- 38 compressed objects within 1 object stream
+ 71 PDF objects out of 1000 (max. 8388607)
+ 42 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -75,4 +75,9 @@ D.~Chen and B.~K.-W. Mak, ``Multitask learning of deep neural networks for
   \url{http://dx.doi.org/10.1109/TASLP.2015.2422573}
 \BIBentrySTDinterwordspacing
 
+\bibitem{young2002}
+S.~Young, G.~Evermann, M.~Gales, T.~Hain, D.~Kershaw, X.~Liu, G.~Moore,
+  J.~Odell, D.~Ollason, D.~Povey \emph{et~al.}, ``The htk book,''
+  \emph{Cambridge university engineering department}, vol.~3, p. 175, 2002.
+
 \end{thebibliography}
