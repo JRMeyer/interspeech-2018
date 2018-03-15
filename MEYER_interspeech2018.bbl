@@ -48,6 +48,12 @@ F.~Gr{\'e}zl and M.~Karafi{\'a}t, ``Boosting performance on low-resource
   Technology Workshop (SLT), 2016 IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax
   IEEE, 2016, pp. 629--636.
 
+\bibitem{panayotov2015}
+V.~Panayotov, G.~Chen, D.~Povey, and S.~Khudanpur, ``Librispeech: an asr corpus
+  based on public domain audio books,'' in \emph{Acoustics, Speech and Signal
+  Processing (ICASSP), 2015 IEEE International Conference on}.\hskip 1em plus
+  0.5em minus 0.4em\relax IEEE, 2015, pp. 5206--5210.
+
 \bibitem{seltzer2013}
 M.~L. Seltzer and J.~Droppo, ``Multi-task learning in deep neural networks for
   improved phoneme recognition,'' in \emph{Acoustics, Speech and Signal
