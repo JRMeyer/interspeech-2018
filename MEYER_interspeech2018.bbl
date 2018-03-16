@@ -48,6 +48,12 @@ F.~Gr{\'e}zl and M.~Karafi{\'a}t, ``Boosting performance on low-resource
   Technology Workshop (SLT), 2016 IEEE}.\hskip 1em plus 0.5em minus 0.4em\relax
   IEEE, 2016, pp. 629--636.
 
+\bibitem{young1994tree}
+S.~J. Young, J.~J. Odell, and P.~C. Woodland, ``Tree-based state tying for high
+  accuracy acoustic modelling,'' in \emph{Proceedings of the workshop on Human
+  Language Technology}.\hskip 1em plus 0.5em minus 0.4em\relax Association for
+  Computational Linguistics, 1994, pp. 307--312.
+
 \bibitem{panayotov2015}
 V.~Panayotov, G.~Chen, D.~Povey, and S.~Khudanpur, ``Librispeech: an asr corpus
   based on public domain audio books,'' in \emph{Acoustics, Speech and Signal
