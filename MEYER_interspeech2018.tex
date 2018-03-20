@@ -43,13 +43,13 @@ Performance for a low-resource language on speech recognition can be improved by
 
 MTL works in situations when tasks are related. For example, the two image recognition tasks (1) find doors and (2) find doorknobs perform better when trained together, because doorknobs are highly predictive of doors, and vice versa \cite{caruana1997}. By forcing a neural net to recognize both objects in the same image, the hidden layers will be biased towards more generalizable representations of the data.
 
-Doors and doorknobs are obviously related, but it is difficult to create related tasks for a new classification problem. The current study investigates auxiliary tasks which are not hand-crafted by an expert or human, but can be automatically extracted from a stage in the traditional ASR pipeline (ie. the phonetic decision tree \cite{young1994tree}). The decision tree creates labeled data for the DNN acoustic model, and encodes contextual information about the data. This information is language-specific, and gets more fine-grained further down the tree.
+Doors and doorknobs are obviously related, but in general it is difficult to create related tasks for a new classification problem. The current study investigates auxiliary tasks which are not hand-crafted by an expert or human, but can be automatically extracted from a stage in the traditional ASR pipeline (ie. the phonetic decision tree \cite{young1994tree}). The decision tree creates labeled data for the DNN acoustic model, and encodes contextual information about the data. This information is language-specific, and gets more fine-grained further down the tree.
 
 The current research builds off the intuition that the labels created by the decision tree (ie. triphones) encode information which is very specific to the source language, and may not be the best representation of the data for language-transfer. Nodes closer to the roots of the tree represent more abstract levels of the data, and therefore encode more language-general information. Given a phonetic decision tree in a source language (English) the current study investigates more abstract data labels for MTL transfer to a target language (Kyrgyz).
 
 In addition to phonetic detail in the training labels, the relative weighting of the source task vs. target task during backprop affects performance outcomes. If the tasks come from separate datasets, the task with the biggest dataset will have most influence during backprop. To avoid one task dominating the target task, we can weight the training labels for the target task, such that each training example has a larger gradient.
 
-The following experiments show that the level of task detail and the relative weighting of tasks is important for MTL. These two factors interact such that, to acheive best results, a more detailed task should be weighted more, and a less detailed task should be weighted less. After an analysis of performance on training and validation data, we see that less detailed (ie. more simple) tasks are easier to learn, and as such, they quickly settle into a good local minumum, and are less likely to budge. However, this local minimum may not be best for the target task.
+The following experiments show that there is an interaction between task detail and task weighting during MTL. These two factors interact such that, to acheive best results, a more detailed task should be weighted more, and a less detailed task should be weighted less. After an analysis of performance on training and validation data, we see that less detailed (ie. more simple) tasks are easier to learn, and as such, they quickly settle into a good local minumum, and are less likely to budge. However, this local minimum may not be best for the target task.
 
 The target language is Kyrgyz, and the source language is English. Both data come from audiobooks, English from LibriSpeech \cite{panayotov2015} and Kyrgyz from the Bizdin.kg project.
 
@@ -90,6 +90,18 @@ The following experiments tease out (1) the level of detail at which the source 
 With regards to the first point, the experiments here are crafted to answer the question: \textit{How much phonetic detail should the source language be modeled at to best transfer inductive bias to the target language?}
 
 We can model the source language with lots of contextual detail (ie. the triphone), with abstracted, context-independent detail (ie. the monophone), or somewhere in between (what I dub the ``half''-phone) (cf. Figure (\ref{fig:tree-parts})\footnote{Original figure from \cite{young2002}.}).
+
+
+\begin{figure}[!htbp]
+  \centering
+\minipage{0.525\textwidth}
+  \includegraphics[width=\linewidth]{figs-1/levels.png}
+  \caption{Logical Tree Parts}
+  \label{fig:tree-parts}
+\endminipage\hfill
+\end{figure}
+
+
 
 The second point of interest is the relative weighting of target vs. source language training data. It is clear that if we train two languages in parallel, the source language (with many more training samples) will dominate the target language in the fight for influence over shared hidden layers during backprop.
 
@@ -142,17 +154,6 @@ I split the LibriSpeech phonetic decision tree into three logical parts, shown i
 
 
 
-
-\begin{figure}[!htbp]
-  \centering
-\minipage{0.525\textwidth}
-  \includegraphics[width=\linewidth]{figs-1/levels.png}
-  \caption{Logical Tree Parts}
-  \label{fig:tree-parts}
-\endminipage\hfill
-\end{figure}
-
-
 The ``half''-phones were created by halving the optimal number of leaves from the triphone system (ie. 1584 leaves) and re-training a new GMM-HMM system with half the optimal number of leaves (1/2 * 1584 = 792 leaves). All the other parameters were left unchanged (number of Gaussian components, iterations of EM, etc.). An overview of the auxiliary tasks can be found in Table (\ref{tab:tasks}).
 
 
@@ -189,7 +190,7 @@ The addition of each above task adds approximately 5 hours of training data to t
   \centering
   \caption{Source:Target Data Weighting Scheme}
   \label{tab:weights}
-  \begin{adjustbox}{width=.3\textwidth}
+  \begin{adjustbox}{width=.33\textwidth}
     \begin{tabular}{cc}
       \toprule
       \textbf{Source:Target Ratio} & \textbf{Target Weighting}\\
@@ -208,7 +209,7 @@ The addition of each above task adds approximately 5 hours of training data to t
 \subsection{Results}
 
 
-All results are performed on the same held-out 30-minute section of Kyrgyz audiobook. The bigram language model, lexicon, and main-task decision tree are built into a standard decoding graph in the traditional Kaldi TDNN pipeline. Decoding is performed with a bigram backoff language model trained on a Wikipedia Kyrgyz dump, and contains, 103,998 unigrams and 56,6871 bigrams.
+All results come from performance on the same held-out 30-minute section of Kyrgyz audiobook. Decoding is performed with a bigram backoff language model trained on a Wikipedia Kyrgyz dump, and contains, 103,998 unigrams and 56,6871 bigrams. The bigram language model, lexicon, and main-task decision tree are built into a standard decoding graph (ie. a Weighted Finite State Transducer) in the traditional Kaldi pipeline. 
 
 The experimental results are shown in Table (\ref{tab:results}) as percent Word Error Rate (WER) relative to the baseline model. All experiments show improvement over the baseline. Each column has in bold the model which performed best (the bottom row has also the bolded best average weighting).
 
@@ -216,7 +217,7 @@ The experimental results are shown in Table (\ref{tab:results}) as percent Word 
   \centering
   \caption{Word Error Rates (WER\%) Relative to Baseline}
     \label{tab:results}
-  \begin{adjustbox}{width=.45\textwidth}
+  \begin{adjustbox}{width=.475\textwidth}
     \begin{tabular}{lcccc}
       \toprule
       & \multicolumn{4}{c}{\textbf{Source:Target Weighting}} \\
@@ -272,43 +273,43 @@ Comparing performance among combinations of auxiliary tasks, we see that MTL tra
 
 \begin{figure*}[!htbp]
 \centering
-\begin{subfigure}{.3\textwidth}
+\begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/1-to-2-mono.png}
-  \caption{2-to-1 Weighting // Monophones}
+  \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/2-to-1-mono.png}
+  \caption{1-to-2 Weighting // Monophones}
   \label{fig:sub1}
 \end{subfigure}%
-\begin{subfigure}{.3\textwidth}
+\begin{subfigure}{.33\textwidth}
   \centering
   \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/1-to-1-mono.png}
   \caption{1-to-1 Weighting // Monophones}
   \label{fig:sub2}
 \end{subfigure}%
-\begin{subfigure}{.3\textwidth}
+\begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/2-to-1-mono.png}
-  \caption{1-to-2 Weighting // Monophones}
+  \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/1-to-2-mono.png}
+  \caption{2-to-1 Weighting // Monophones}
   \label{fig:sub2}
 \end{subfigure}
 
 \medskip
 
-\begin{subfigure}{.3\textwidth}
+\begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/1-to-2-tri.png}
-  \caption{2-to-1 Weighting // Triphones}
+  \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/2-to-1-tri.png}
+  \caption{1-to-2 Weighting // Triphones}
   \label{fig:sub1}
 \end{subfigure}%
-\begin{subfigure}{.3\textwidth}
+\begin{subfigure}{.33\textwidth}
   \centering
   \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/1-to-1-tri.png}
   \caption{1-to-1 Weighting // Triphones}
   \label{fig:sub2}
 \end{subfigure}%
-\begin{subfigure}{.3\textwidth}
+\begin{subfigure}{.33\textwidth}
   \centering
-  \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/2-to-1-tri.png}
-  \caption{1-to-2 Weighting // Triphones}
+  \includegraphics[width=1\textwidth,keepaspectratio]{figs-1/1-to-2-tri.png}
+  \caption{2-to-1 Weighting // Triphones}
   \label{fig:sub2}
 \end{subfigure}
 \caption{Source:Target Weighting vs. Source Task Detail}
@@ -323,11 +324,14 @@ Perhaps the most interesting finding is the interaction between level of detail 
 
 A task with fewer labels is typically easier to learn, finds a local minimum more quickly, and is less willing to budge once it is settled. A more difficult source task will take longer to learn, and as such, the target task will be able to exert more influence on the shared hidden layers.
 
-Figure (\ref{fig:1-to-2}) shows performance (ie. frame-level accuracy) during training for a MTL DNN two auxiliary tasks (rows) and three weighting schemes (columns). Going from left-to-right, the source task loses weight, and the target task gains influence.
+Figure (\ref{fig:1-to-2}) shows performance (ie. frame-level classification accuracy) during training with one of two auxiliary tasks (cf. Figure(\ref{fig:1-to-2}) rows) and three weighting schemes (cf. Figure(\ref{fig:1-to-2}) columns). The source task is weighted heavier in the left column, and in the right column the target task is weighted more. The top row shows experiments with English monophones as source task, and the bottom row shows English triphones as a source task. The Green vs Blue lines represent training data accuracy (for English vs. Kyrgyz respectively). The Red vs. Orange lines represent validation data accuracy (for. English vs. Kyrgyz respectively).
 
-The Green and Blue lines represent accuracy on training data (for English vs. Kyrgyz respectively). The Red and Orange represent accuracy on held-out validation data (for. English vs. Kyrgyz respectively). The top row shows results from MTL with English monophones, and the bottom row shows results with English Triphones.
+We see most overfitting to the target data in Figure (\ref{fig:1-to-2}d), where the source task is most detailed (triphones), and the source data is only weighted half as much as the target data during training. This model performed substantially worse than all others shown here, with only a 1.17\% WER improvement over baseline.
 
-In general, we see that the source:target ratio, the less source overfits and the more target overfits. 
+Looking up to Figure (\ref{fig:1-to-2}c) we see the other extreme, where the source task is weighted twice as much as the target task, and the source task is very simple (monophones). The gap between tasks is widest in this setting, because the source task finds a good local minimum quickly, and the target data never has enough weight to influence the hidden layers.
+
+These results indicate that merely adding related tasks in training via MTL is not enough to guarantee optimal transfer - one must consider task difficulty and weight accordingly. 
+
 
 
 
@@ -335,7 +339,7 @@ In general, we see that the source:target ratio, the less source overfits and th
 
 Multi-Task Learning promises a very simple solution to a very hard problem. It would seem that as long as we can add relevant tasks to our net, through the good graces of backprop, a best solution will automatically be discovered. It would also seem that we are guaranteed to get better results as long as we keep adding related tasks. This study shows that the picture is not so simple.
 
-Starting with three additional tasks, which are clearly related \textit{a priori}, the current study investigated not only their relative import, but also the dynamics of their combinations. Each task represented a level of abstraction from the typical training labels, from fine-grained (triphones), to more abstract (half-phones) to completely context-free (monophones). In addition to these three levels (deduced from a given decision tree), I tested logical combinations of abstractions: the entire tree, the top half of the tree, and the bottom half of the tree. None of these combinations outperformed the tasks added individually.
+Starting with three additional tasks, which are clearly related \textit{a priori}, the current study investigated not only their relative import, but also the dynamics of their combinations. Each task represents a level of abstraction from the typical training labels, from fine-grained (triphones), to more abstract (half-phones) to completely context-free (monophones). In addition to these three levels (deduced from a given decision tree), I tested logical combinations of abstractions: the entire tree, the top half of the tree, and the bottom half of the tree. None of these combinations outperformed the tasks added individually.
 
 The interaction of differential task weighting and level of task detail was perhaps the most interesting finding of the current study. The level of task abstraction correlates to number of labels in the task, number of nodes in the output layer, and number of parameters in the model.
 
