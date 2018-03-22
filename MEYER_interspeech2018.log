@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  20 MAR 2018 11:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.1.22)  22 MAR 2018 07:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -446,20 +446,19 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 23.
+LaTeX Font Info:    Try loading font information for U+msa on input line 69.
 
-Underfull \hbox (badness 3612) in paragraph at lines 63--64
-[]\OT1/ptm/m/n/9 The ear-li-est ex-am-ples of MTL with mul-ti-ple (low-
- []
-
-LaTeX Font Info:    Try loading font information for U+msa on input line 71.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 71.
+LaTeX Font Info:    Try loading font information for U+msb on input line 69.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+)
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 
@@ -467,44 +466,44 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <figs-1/tree-net.png, id=10, 1385.175pt x 1000.73875pt>
 File: figs-1/tree-net.png Graphic file (type png)
 <use figs-1/tree-net.png>
-Package pdftex.def Info: figs-1/tree-net.png  used on input line 77. on input l
-ine 77.
+Package pdftex.def Info: figs-1/tree-net.png  used on input line 75. on input l
+ine 75.
 Package pdftex.def Info: Requested size: 241.84842pt x 174.71962pt on input lin
-e 77.
+e 75.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 76--81
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 74--79
  []$[]$ 
  []
 
 <figs-1/levels.png, id=12, 1596.96625pt x 512.91624pt>
 File: figs-1/levels.png Graphic file (type png)
 <use figs-1/levels.png>
-Package pdftex.def Info: figs-1/levels.png  used on input line 98. on input lin
-e 98.
+Package pdftex.def Info: figs-1/levels.png  used on input line 92. on input lin
+e 92.
 Package pdftex.def Info: Requested size: 253.93788pt x 81.55956pt on input line
- 98.
+ 92.
 
-Overfull \hbox (26.31584pt too wide) in paragraph at lines 97--102
+Overfull \hbox (26.31584pt too wide) in paragraph at lines 91--96
  []$[]$ 
  []
 
 
-Underfull \hbox (badness 1635) in paragraph at lines 125--126
+Underfull \hbox (badness 1635) in paragraph at lines 117--118
 \OT1/ptm/m/n/9 All mod-els were build us-ing the Kaldi toolkit as Time-
  []
 
 
-Underfull \hbox (badness 1748) in paragraph at lines 125--126
+Underfull \hbox (badness 1748) in paragraph at lines 117--118
 \OT1/ptm/m/n/9 [[], []]. The main neu-ral net run script used in this
  []
 
 
-Underfull \hbox (badness 6741) in paragraph at lines 125--126
+Underfull \hbox (badness 6741) in paragraph at lines 117--118
 \OT1/ptm/m/n/9 pa-per can be found at www.github.com/JRMeyer/kaldi-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 117--118
 \OT1/ptm/m/n/9 at www.github.com/JRMeyer/kaldi-mirror/egs/kgz/kyrgyz-
  []
 
@@ -518,56 +517,56 @@ See the textcomp package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.169 ... Detail} & \textbf{ \textnumero~of Tasks}
+l.155 ... Detail} & \textbf{ \textnumero~of Tasks}
                                                   \\
 ? 
 
-Overfull \hbox (2.13762pt too wide) in paragraph at lines 237--238
+Overfull \hbox (2.13762pt too wide) in paragraph at lines 223--224
  [] 
  []
 
 <figs-1/2-to-1-mono.png, id=22, 462.528pt x 346.896pt>
 File: figs-1/2-to-1-mono.png Graphic file (type png)
 <use figs-1/2-to-1-mono.png>
-Package pdftex.def Info: figs-1/2-to-1-mono.png  used on input line 278. on inp
-ut line 278.
+Package pdftex.def Info: figs-1/2-to-1-mono.png  used on input line 264. on inp
+ut line 264.
 Package pdftex.def Info: Requested size: 159.62083pt x 119.7163pt on input line
- 278.
+ 264.
 <figs-1/1-to-1-mono.png, id=23, 462.528pt x 346.896pt>
 File: figs-1/1-to-1-mono.png Graphic file (type png)
 <use figs-1/1-to-1-mono.png>
-Package pdftex.def Info: figs-1/1-to-1-mono.png  used on input line 284. on inp
-ut line 284.
+Package pdftex.def Info: figs-1/1-to-1-mono.png  used on input line 270. on inp
+ut line 270.
 Package pdftex.def Info: Requested size: 159.62083pt x 119.7163pt on input line
- 284.
+ 270.
 <figs-1/1-to-2-mono.png, id=24, 462.528pt x 346.896pt>
 File: figs-1/1-to-2-mono.png Graphic file (type png)
 <use figs-1/1-to-2-mono.png>
-Package pdftex.def Info: figs-1/1-to-2-mono.png  used on input line 290. on inp
-ut line 290.
+Package pdftex.def Info: figs-1/1-to-2-mono.png  used on input line 276. on inp
+ut line 276.
 Package pdftex.def Info: Requested size: 159.62083pt x 119.7163pt on input line
- 290.
+ 276.
 <figs-1/2-to-1-tri.png, id=25, 462.528pt x 346.896pt>
 File: figs-1/2-to-1-tri.png Graphic file (type png)
 <use figs-1/2-to-1-tri.png>
-Package pdftex.def Info: figs-1/2-to-1-tri.png  used on input line 299. on inpu
-t line 299.
+Package pdftex.def Info: figs-1/2-to-1-tri.png  used on input line 285. on inpu
+t line 285.
 Package pdftex.def Info: Requested size: 159.62083pt x 119.7163pt on input line
- 299.
+ 285.
 <figs-1/1-to-1-tri.png, id=26, 462.528pt x 346.896pt>
 File: figs-1/1-to-1-tri.png Graphic file (type png)
 <use figs-1/1-to-1-tri.png>
-Package pdftex.def Info: figs-1/1-to-1-tri.png  used on input line 305. on inpu
-t line 305.
+Package pdftex.def Info: figs-1/1-to-1-tri.png  used on input line 291. on inpu
+t line 291.
 Package pdftex.def Info: Requested size: 159.62083pt x 119.7163pt on input line
- 305.
+ 291.
 <figs-1/1-to-2-tri.png, id=27, 462.528pt x 346.896pt>
 File: figs-1/1-to-2-tri.png Graphic file (type png)
 <use figs-1/1-to-2-tri.png>
-Package pdftex.def Info: figs-1/1-to-2-tri.png  used on input line 311. on inpu
-t line 311.
+Package pdftex.def Info: figs-1/1-to-2-tri.png  used on input line 297. on inpu
+t line 297.
 Package pdftex.def Info: Requested size: 159.62083pt x 119.7163pt on input line
- 311.
+ 297.
 [3] [4 <./figs-1/2-to-1-mono.png> <./figs-1/1-to-1-mono.png> <./figs-1/1-to-2-m
 ono.png> <./figs-1/2-to-1-tri.png> <./figs-1/1-to-1-tri.png> <./figs-1/1-to-2-t
 ri.png>] (./MEYER_interspeech2018.bbl) [5
@@ -584,7 +583,7 @@ Here is how much of TeX's memory you used:
  8534 multiletter control sequences out of 15000+600000
  30249 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 43i,8n,77p,724b,523s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,8n,77p,802b,523s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texli
 ve/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/
 type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
@@ -595,7 +594,7 @@ hare/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on MEYER_interspeech2018.pdf (5 pages, 423230 bytes).
+Output written on MEYER_interspeech2018.pdf (5 pages, 423290 bytes).
 PDF statistics:
  75 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream
