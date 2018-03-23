@@ -37,7 +37,7 @@ This study uses Kyrgyz (audiobook recordings) as a target language and English (
 
 \section{Introduction}
 
-Performance for a low-resource language on speech recognition can be improved by adding training data from another, resource-rich language. In the Multi-Task Learning (MTL) framework, data from a related source domain updates hidden layers in parallel with the target task \cite{caruana1997}. In ASR, the targets for this addititional language have typically been states of context-dependent triphones, defined by some tree clustering algorithm \cite{huang2013,heigold2013,grezl2016}.
+Performance for a low-resource language on speech recognition can be improved by adding training data from another, resource-rich language. In the Multi-Task Learning (MTL) framework, data from a related source domain updates hidden layers in parallel with the target task \cite{caruana1997}. In ASR, the targets for this additional language have typically been states of context-dependent triphones, defined by some tree clustering algorithm \cite{huang2013,heigold2013,grezl2016}.
 
 MTL works in situations when tasks are related. For example, the two image recognition tasks (1) find doors and (2) find doorknobs perform better when trained together, because doorknobs are highly predictive of doors, and vice versa \cite{caruana1997}. By forcing a neural net to recognize both objects in the same image, the hidden layers will be biased towards more generalizable representations of the data.
 
@@ -47,7 +47,7 @@ The current research builds off the intuition that the labels created by the dec
 
 In addition to phonetic detail in the training labels, the relative weighting of the source task vs. target task during backprop affects performance outcomes. If tasks come from separate datasets, the task with the biggest dataset will have most influence during backprop. To avoid an auxiliary task with a large dataset dominating the target task in training, we can weight training labels, such that more important examples will have a larger gradient.
 
-The following experiments show that there is an interaction between task detail and task weighting during MTL. These two factors interact such that, to acheive best results, a more detailed task should be weighted more, and a less detailed task should be weighted less. After an analysis of performance on training and validation data, we see that less detailed (ie. more simple) tasks are easier to learn, and as such, they quickly settle into a good local minumum, and are less likely to budge. However, this local minimum may not be best for the target task.
+The following experiments show that there is an interaction between task detail and task weighting during MTL. These two factors interact such that, to achieve best results, a more detailed task should be weighted more, and a less detailed task should be weighted less. After an analysis of performance on training and validation data, we see that less detailed (ie. more simple) tasks are easier to learn, and as such, they quickly settle into a good local minimum, and are less likely to budge. However, this local minimum may not be best for the target task.
 
 The target language is Kyrgyz, and the source language is English. Both data come from audiobooks, English from LibriSpeech \cite{panayotov2015} and Kyrgyz from the Bizdin.kg project.
 
@@ -66,7 +66,7 @@ With regards to monolingual MTL, research has aimed to find tasks (from the same
 
 \section{DNN-Hybrid Training as Model Transfer}
 
-The standard DNN-Hybrid approach uses an initial GMM-HMM system to generate the labeled data for supervised DNN training. This reliance of the DNN on GMM alignments is actually a form of model transfer, where the DNN is trained to perform the extact same classification as its GMM predecessor. The DNN not only learns the frame alignments from the individual GMMs, but also the structure of the phonetic decision tree used to define the labels, as shown in Figure (\ref{fig:tree-net})\footnote{The original decision tree graphic comes from \cite{young2002}, and the original neural net graphic comes from \cite{heigold2013}}.
+The standard DNN-Hybrid approach uses an initial GMM-HMM system to generate the labeled data for supervised DNN training. This reliance of the DNN on GMM alignments is actually a form of model transfer, where the DNN is trained to perform the exact same classification as its GMM predecessor. The DNN not only learns the frame alignments from the individual GMMs, but also the structure of the phonetic decision tree used to define the labels, as shown in Figure (\ref{fig:tree-net})\footnote{The original decision tree graphic comes from \cite{young2002}, and the original neural net graphic comes from \cite{heigold2013}}.
 
 
 \begin{figure}[!htbp]
@@ -78,7 +78,7 @@ The standard DNN-Hybrid approach uses an initial GMM-HMM system to generate the 
   \endminipage\hfill
 \end{figure}
 
-However, all heirarchical knowledge inherent to the decision tree is lost to the DNN. The DNN only sees the leaves of the tree, but none of the relationships among those leaves. The branches and roots are lost, which contain more abstract, language-general knowledge. The current study extracts the heirarchical knowledge of this tree via MTL, by modeling various levels of the tree as separate tasks. 
+However, all hierarchical knowledge inherent to the decision tree is lost to the DNN. The DNN only sees the leaves of the tree, but none of the relationships among those leaves. The branches and roots are lost, which contain more abstract, language-general knowledge. The current study extracts the heirarchical knowledge of this tree via MTL, by modeling various levels of the tree as separate tasks. 
 
 
 \section{Experiments}
@@ -97,9 +97,9 @@ The following experiments tease out (1) the level of detail at which the source 
 
 
 
-The second question is: \textit{How should the target and source languages be weighted during training?}. If we train two languages in parallel, the language with more data will dominate in the fight for influence over shared hidden layers during backprop. To my knowledge, the importance of relative weighting has not been investigated in ASR acoustic modeling (although thouroughly discussed in Caruana's 1997 dissertation \cite{caruana1997}).
+The second question is: \textit{How should the target and source languages be weighted during training?} If we train two languages in parallel, the language with more data will dominate in the fight for influence over shared hidden layers during backprop. To my knowledge, the importance of relative weighting has not been investigated in ASR acoustic modeling (although thoroughly discussed in Caruana's 1997 dissertation \cite{caruana1997}).
 
-To investigate weighting further, I examine the following weighting schemes: 1-to-2, 1-to-1, and 2-to-1 (all ratios are source-to-target). These weights are instantiated during training via a weight to the target output label, where the label is a one-hot vector. For example, given 1000 hours of source language and 1 hour of target language, to acheive a 1-to-1 ratio in training, I would multiply the target labels from the target language by 1000, resulting in target vectors such as \texttt{$[0, 0, 0, 0, 1000, 0, 0, \ldots]$} instead of \texttt{$[0, 0, 0, 0, 1, 0, 0, \ldots]$}.
+To investigate weighting further, I examine the following weighting schemes: 1-to-2, 1-to-1, and 2-to-1 (all ratios are source-to-target). These weights are instantiated during training via a weight to the target output label, where the label is a one-hot vector. For example, given 1000 hours of source language and 1 hour of target language, to achieve a 1-to-1 ratio in training, I would multiply the target labels from the target language by 1000, resulting in target vectors such as \texttt{$[0, 0, 0, 0, 1000, 0, 0, \ldots]$} instead of \texttt{$[0, 0, 0, 0, 1, 0, 0, \ldots]$}.
 
 
 
@@ -116,7 +116,7 @@ Two speech corpora are used in the following experiments:
 
 All models were build using the Kaldi toolkit as Time-Delay Neural Networks (TDNNs) via the \texttt{nnet3} approach \cite{povey2011,peddinti2015}. The main neural net run script used in this paper can be found at www.github.com/JRMeyer/kaldi-mirror/egs/kgz/kyrgyz-model/run\_nnet3\_multilingual.sh. The main GMM script used to create data alignments can be found at www.github.com/JRMeyer/kaldi-mirror/egs/kgz/kyrgyz-model/run\_gmm.sh.
 
-In GMM training, monophones (for each language) were allotted 1,000 Gaussian components, and trained over 25 iterations of EM. These monophones were then expanded into context-dependent triphones via a phonetic decision tree, with a maximum of 2,000 leaves \& 5,000 Gaussians (LibriSpeech reached 1584 leaves, and Kyrgyz reached 752). The resulting tied-state clusters (ie. leaves) are then trained as context-dedendent triphones over 25 iterations of EM. Given the alignments from the GMM-HMM models, a 5-layer, 500-dimensional TDNN is trained over 10 epochs of backprop on a single GPU instance.
+In GMM training, monophones (for each language) were allotted 1,000 Gaussian components, and trained over 25 iterations of EM. These monophones were then expanded into context-dependent triphones via a phonetic decision tree, with a maximum of 2,000 leaves \& 5,000 Gaussians (LibriSpeech reached 1584 leaves, and Kyrgyz reached 752). The resulting tied-state clusters (ie. leaves) are then trained as context-dependent triphones over 25 iterations of EM. Given the alignments from the GMM-HMM models, a 5-layer, 500-dimensional TDNN is trained over 10 epochs of backprop on a single GPU instance.
 
 Each auxiliary task is implemented as a separate output layer along with a separate, penultimate hidden layer. All other hidden layers of the TDNN are trained in parallel. A declining learning rate was used, with an initial $\alpha_{initial}=0.0015$ and a final $\alpha_{final}=0.00015$. The objective function is $max( KaldiBatchNorm(ReLU\_activation) \bullet target )$.
 
@@ -126,7 +126,7 @@ During testing, \textit{only} the main task is used. The additional tasks are dr
 
 \subsubsection{Baseline Model}
 
-All the following architectures will be compared to the performance of a baseline model of identical architecture (5 hidden layers, 500-dimentional layers, ReLU activations, same linear objective function). The output targets are standard context-dependent triphones trained on Kyrgyz audio. To account for any advantage mutliple output layers may bring about, the baseline contains two output layers, where the tasks are identical. In this way, random initializations in the weights and biases for each task are accounted for.
+All the following architectures will be compared to the performance of a baseline model of identical architecture (5 hidden layers, 500-dimensional layers, ReLU activations, same linear objective function). The output targets are standard context-dependent triphones trained on Kyrgyz audio. To account for any advantage multiple output layers may bring about, the baseline contains two output layers, where the tasks are identical. In this way, random initializations in the weights and biases for each task are accounted for.
 
 \subsubsection{Auxiliary Tasks}
 
@@ -225,7 +225,7 @@ The experimental results are shown in Table (\ref{tab:results}) as percent Word 
 
 We see that on average, across all tasks and task combinations, a 1-to-1 weighting performed the best with an average 2.90\% improvement over the baseline. Averaged over all weighting schemes, the best auxiliary task was English monophones (most abstract task).
 
-The best overall combination of weighting and source task detail was a tie between (1) triphones + 2-to-1 weighting and (2) half-phones + 1-to-1 weighting. Even though on average the abstract source task labels (monophones) performed better, the more detailed source tasks acheived best WER in a single run (3.81\% improvement).
+The best overall combination of weighting and source task detail was a tie between (1) triphones + 2-to-1 weighting and (2) half-phones + 1-to-1 weighting. Even though on average the abstract source task labels (monophones) performed better, the more detailed source tasks achieved best WER in a single run (3.81\% improvement).
 
 Comparing performance among combinations of auxiliary tasks, we see that MTL training with just one auxiliary task always performed better than two or three extra source tasks.
 
@@ -310,7 +310,7 @@ Perhaps the most interesting finding is the interaction between level of detail 
 
 A task with fewer labels is typically easier to learn, finds a local minimum more quickly, and is less willing to budge once it is settled. A more difficult source task will take longer to learn, and as such, the target task will be able to exert more influence on the shared hidden layers. We see this behavior during training in Figure (\ref{fig:1-to-2}).
 
-Figure (\ref{fig:1-to-2}) shows neural net performance during training (ie. frame-level classification accuracy) on two separate auxiliary tasks (cf. Figure(\ref{fig:1-to-2}) rows) and three separate weighting schemes (cf. Figure(\ref{fig:1-to-2}) columns). The source task is weighted heavier in the left column, the target task is weighted more in the right column, and the source and target are weight equally in the center column. The top row shows experiments with English monophones as source task, and the bottom row shows English triphones as a source task. The Green vs Blue lines represent training data accuracy (for English vs. Kyrgyz respectively). The Red vs. Orange lines represent validation data accuracy (for. English vs. Kyrgyz respectively).
+Figure (\ref{fig:1-to-2}) shows neural net performance during training (ie. frame-level classification accuracy) on two separate auxiliary tasks (cf. Figure (\ref{fig:1-to-2}) rows) and three separate weighting schemes (cf. Figure (\ref{fig:1-to-2}) columns). The source task is weighted heavier in the left column, the target task is weighted more in the right column, and the source and target are weight equally in the center column. The top row shows experiments with English monophones as source task, and the bottom row shows English triphones as a source task. The Green vs Blue lines represent training data accuracy (for English vs. Kyrgyz respectively). The Red vs. Orange lines represent validation data accuracy (for. English vs. Kyrgyz respectively).
 
 We see most overfitting to the target language data when the source task is least weighted and most detailed (cf. Figure (\ref{fig:1-to-2}d)). This model performed substantially worse than all others displayed here, with only a 1.17\% WER improvement over baseline. Looking up to Figure (\ref{fig:1-to-2}c) we see the opposite extreme, where the source task is most weighted and least detailed. The gap between source and target tasks is widest in this setting, because the source task finds a good local minimum quickly, and the target data never has enough weight to influence the hidden layers. This is not the optimal weighting for this task (3.13\% vs. 3.22\% improvement).
 
@@ -323,7 +323,7 @@ These results indicate that merely adding related tasks in training via MTL is n
 
 Multi-Task Learning promises a very simple solution to a very hard problem, but it does not always deliver. It would seem that as long as we can add relevant tasks to our net, through the good graces of backprop, a best solution will automatically be discovered. It would also seem that we are guaranteed to get better results as long as we keep adding related tasks. This study shows that the picture is not so simple.
 
-Starting with three additional tasks which are clearly related \textit{a priori}, this study investigated each task's import, and the dynamics of task combinations. Each task represents a level of abstraction from the typical training labels, from fine-grained (triphones), to more abstract (half-phones) to completely context-free (monophones). In addition to these three levels (deduced from a given decision tree), I tested logical combinations of abstractions: the entire tree, the top half of the tree, and the bottom half of the tree. None of these combinations outperformed the tasks added individually.
+Starting with three additional tasks which are clearly related \textit{a priori}, this study investigated each task's import and the dynamics of task combinations. Each task represents a level of abstraction from the typical training labels, from fine-grained (triphones), to more abstract (half-phones) to completely context-free (monophones). In addition to these three levels (deduced from a given decision tree), I tested logical combinations of abstractions: the entire tree, the top half of the tree, and the bottom half of the tree. None of these combinations outperformed the tasks added individually.
 
 The interaction of task weighting and task detail is perhaps the most interesting finding presented here. With more labels, the task is inherently more difficult and the model has more parameters to train. As such, models with fewer labels found their local minimum more quickly, and were more likely to exert influence over shared hidden layers than the target task (ie. from a smaller dataset). In similar MTL setups, care should be taken to weighting auxiliary tasks relative to their simplicity, even if tasks are related.
 
