@@ -1,0 +1,193 @@
+
+============================================================================
+Interspeech 2018 Reviews for Submission #1790
+============================================================================
+
+Title: Multilingual Multi-Task Learning for Low-Resource Acoustic Modeling
+Authors: Joshua Meyer
+============================================================================
+                            REVIEWER #1
+============================================================================
+
+Comment on Importance/relevance for Interspeech
+---------------------------------------------------------------------------
+This paper studies to improve low-resource language acoustic modelling with another resource-rich language, which is an interesting and very useful topic in practice. Multi-task learning is also a reasonable method for this research task as shown by many other researchers.
+---------------------------------------------------------------------------
+
+
+Comment on Novelty/Originality
+---------------------------------------------------------------------------
+The author claimed that increasing the weighting of the low-resource data in acoustic modelling has not been investigated in ASR, which is not true. Dated back to the GMM-HMM period of time, increasing the relevant weights or simply duplicating the low-resource task data is a common trick sometimes used in accented speech adaptation etc. A clearly related and technically more correct approach is the MAP adaptation, whose GMM mean value equation can be explained in this perspective.
+---------------------------------------------------------------------------
+
+
+Comment on Technical Correctness
+---------------------------------------------------------------------------
+This paper has multiple technical issues. Here I just list some of them:
+1. In section 3, the author wrote: "This reliance of the DNN on GMM alignments is actually a form of model transfer, where the DNN is trained to perform the exact same classification as its GMM predecessor."
+This is clearly wrong as DNN is not trained to perform "the exact same classification as its GMM predecessor" (here clearly the author was talking about frame-level training, though it was not mentioned). If so, how can DNN outperform GMMs? Actually, the GMMs were just used to produce the alignments -- which means they were just used to find the one-best phone sequence (more exactly to be HMM state sequence) given the reference word sequence, along with the time information. Since reference word sequences are often manually labelled by human, they are not what GMMs would generate if they are used for "classification".
+2. From section 4, what the author called "relative weighting" is just to increase the "1" value in the original 1-of-K coded frame-level reference labels to the some manually designed weight. This would be mathematically wrong if cross-entropy is used in training as it breaks the assumptions in cross-entropy that the reference labels are distributions (though I can believe it may work -- perhaps it is better to just increase the weighting of the gradient values). However, it is not clear if the author was using cross-entropy. In section 4.2, some objective function is given, which is extremely oddly presented: "max(KaldiBatchNorm(ReLU activation) • target)". This is clearly not any common objective function, and even has ReLU rather softmax as output activation function. I doubt whether the author might have made a severe mistake here as the max() function here has only one input ...
+3. Another major issue lies in the experiments to obtain the conclusions. The author only used about 5 hours English data as the source language and 1.5 hours Kyrgyz data as the only one target language. The dataset size is too small to obtain anything reliable especially when taking into account that multi-task learning is a way of regularisation. Furthermore, using only one target language from one special data set could not lead to the very general conclusions the author claimed in abstract.
+---------------------------------------------------------------------------
+
+
+Comment on Clarity of Presentation
+---------------------------------------------------------------------------
+The paper was not very well written for various reasons. The main problem is the organisation of the paper that both section 2 & 3 seem to be the background part, and the proposed method was actually introduced in the experiment section. Furthermore, the use of terms, the experiment setup, and some technical details were not properly explained. For example, the author mainly discussed "DNN-Hybrid" in section 3 but actually never explain what is "DNN-Hybrid"; the objective function is also not properly given which gave rise to important confusions.
+---------------------------------------------------------------------------
+
+
+Comment on the adequacy of references
+---------------------------------------------------------------------------
+Many related works in learning with asymmetric data, such using adaptation for accented speech acoustic modelling were not covered. Also multiple related works with multi-task learning for monolingual language training were ignored.
+---------------------------------------------------------------------------
+
+
+Comment regarding overall recommendation
+---------------------------------------------------------------------------
+The main reason I suggest to reject this paper is its technical incorrectness as discussed in previous category.
+---------------------------------------------------------------------------
+
+
+Detailed Comments
+---------------------------------------------------------------------------
+Summary of the paper:
+This paper studies to improve low-resource language acoustic modelling with another resource-rich language, which is an interesting and very useful topic in practice. Multi-task learning is also a reasonable method for this research task as shown by many other researchers. This could be an interesting work as it is not only an interesting research problem, but also solves real problems in real-world applications. However, the author chose a possibly mathematically incorrect method that just increasing the reference label value in frame-level training. It is "possibly mathematically incorrect" as the author provided a problematic objective function without any explanation.
+
+Key Strength of the paper:
+The most interesting part of the paper is the task itself. Also multi-task learning could be a good solution.
+
+Main Weakness of the paper:
+The major problem of the paper is the technical incorrectness lies in various places. I listed some of them in the "Technical Correctness" category.
+
+Detailed Review:
+There are also more problems in the paper. For example, "DNN-Hybrid" was not explained in that section; some important references were missing; the paper was not well-organised and was confusing in reading.
+---------------------------------------------------------------------------
+
+
+
+============================================================================
+                            REVIEWER #2
+============================================================================
+
+Detailed Comments
+---------------------------------------------------------------------------
+Summary of the paper:
+The paper is about transfer learning from a general language to a low resource language based on
+multitask learning of DNN. The source language is used as the auxiliary task, where monophone,
+triphone, "half"-phones or their combinations are used as the target. The half-phone is a triphone
+having a smaller number of states than the standard configuration by stopping the decision tree
+state clustering earlier. In the training, three conditions of weighting are compared.
+Experimental results shows the multitask learning reduces WER in the low resource language speech
+recognition.
+Depending on the weighting conditions, using one of monophone, triphone, or halfphone as the
+auxiliary task worked better than using combinations of them.
+It is discussed that when the source task is weighted higher than the target task, using triphone
+as the auxiliary task lead to better performance, while monophone is better when it is weighted lower.
+
+Key Strength of the paper:
+*Investigates multitask learning conditions for better performance in low resource language
+speech recognition.
+
+Main Weakness of the paper:
+*Technically incremental.
+*Experiments are limited to a single language pair (English and Kyrgyz).
+*While English is used as the source language, the amount of data is 5 hours
+and very limited.
+*Improvement in WER is relatively small.
+
+Detailed Review:
+*The experiment is limited and it is not clear how the results generalize to other conditions.
+*"Bilingual" would be more appropriate than "multilingual" when only one source language is used.
+*In section 4.2.3, is it correct that one-to-one ratio means weighting the target language
+(e.g., 3x) so that it balances with the amount of source language? Then what do you mean by
+"one hour of Kyrgyz is equal to one hour of English"?
+---------------------------------------------------------------------------
+
+
+
+============================================================================
+                            REVIEWER #3
+============================================================================
+
+Comment on Clarity of Presentation
+---------------------------------------------------------------------------
+The paper requires restructuring and reweighting the description detail of the different parts.
+The definition of how MTL is applied to this context should be explained first.
+Details about the tree clustering of the phonetic labels is important in this context and should be thoroughly covered.
+Several things are unclear and maybe even wrong. Does the DNN learn the structure of the phonetic decision tree? This seems to be later contradicted in the next paragraph.
+The topic is interesting, but the clarity of presentation is currently a major obstacle in the paper.
+---------------------------------------------------------------------------
+
+
+Comment regarding overall recommendation
+---------------------------------------------------------------------------
+The paper in its current form lacks the clarity and the depth required for it to be useful for the wider community. I recommend reworking the paper and deepening the experimental setup in order to give the proper value to the ideas and findings of the author.
+---------------------------------------------------------------------------
+
+
+Detailed Comments
+---------------------------------------------------------------------------
+The paper presents an experiment to test the different weightings and phonetic decision tree details of a Multi Task Learning multilingual setup in order to optimise the ASR performance of one given low-resource language.
+The paper idea is interesting however the presentation and the experimental setup seem insufficient for acceptance.
+The presentation needs significant work for it to be of good use to other members of the speech community. The plots also seem unclear and difficult to follow (the source-target weightings are incorrect?), the discussion is difficult to relate to the figures. Furthermore some important details remain unclear, the objective function is not explicitly defined (the Kaldi function name is unsuficient), the training procedure needs more description (are the examples of target and source interleaved/shuffled and then batched?), the parameters initialisations (are they initialised equal for all configurations?),...
+The experimental setup also needs further work since 3 weighting ratios and 3 phonetic decision tree detail levels seem insufficient to find a significant trend. This seems to be the case given the results.
+
+Details
+-------
+
+The way weighting is implemented should be further explained since it depends on the loss function used.
+The phonetic decision tree also needs further explanation since it is crucial to the level of detail parameter of the tree.
+5h compared to 1.5h seems quite similar. High resource language models seem to have many more hours, do these findings still hold with >>5h for the source?
+---------------------------------------------------------------------------
+
+
+
+============================================================================
+                            REVIEWER #4
+============================================================================
+
+Comment on Importance/relevance for Interspeech
+---------------------------------------------------------------------------
+low-resource acoustic modeling is of general interest
+---------------------------------------------------------------------------
+
+
+Comment on Novelty/Originality
+---------------------------------------------------------------------------
+MTL for low-resource acoustic modeling has been done thoroughly. The paper only investigates the relative weighting of the multiple tasks when either triphones or monophones are used. While the author said that has not been done before, that is not exactly true.
+---------------------------------------------------------------------------
+
+
+Comment on Technical Correctness
+---------------------------------------------------------------------------
+There are nothing technical new, so it can't be wrong.
+---------------------------------------------------------------------------
+
+
+Comment on Clarity of Presentation
+---------------------------------------------------------------------------
+It is an investigative research based on current techniques.
+---------------------------------------------------------------------------
+
+
+Comment regarding overall recommendation
+---------------------------------------------------------------------------
+Nothing new
+---------------------------------------------------------------------------
+
+
+Detailed Comments
+---------------------------------------------------------------------------
+Summary of the paper:
+The paper investigates the relative weighting of the multiple tasks in MTL of low-resource acoustic modeling when either triphones or monophones are used.
+
+Key Strength of the paper:
+not much
+
+Main Weakness of the paper:
+While the author said that has not been done before, that is not exactly true.
+
+Detailed Review:
+MTL for low-resource acoustic modeling has been done thoroughly. The paper only investigates the relative weighting of the multiple tasks when either triphones or monophones are used. While the author said that has not been done before, that is not exactly true. In many MTL papers, authors usually had tried to adjust the weighting empirically, and depending on the tasks, most times people find that an equal weighting is good enough. So this paper doesn't add anything new to the area. In practice, one still would try to optimize the weights.
+---------------------------------------------------------------------------
